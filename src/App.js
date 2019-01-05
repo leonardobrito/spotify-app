@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import GlobalStyle from './styles/global';
+import Sidebar from './components/Sidebar/index';
 
 const App = () => (
-  <div className="App">
+  <Fragment>
     <GlobalStyle />
-    <h1>Spotify Clone</h1>
-  </div>
+    <Sidebar />
+  </Fragment>
 );
 
 export default App;
