@@ -1,23 +1,27 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './styles/global';
-import Sidebar from './components/Sidebar/index';
-import Header from './components/Header/index';
-import Player from './components/Player/index';
-
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Player from './components/Player';
 import { Wrapper, Container, Content } from './styles/components';
+import Routes from './routes';
 
 const App = () => (
   <Fragment>
     <GlobalStyle />
-    <Wrapper>
-      <Container>
-        <Sidebar />
-        <Content>
-          <Header />
-        </Content>
-      </Container>
-      <Player />
-    </Wrapper>
+    <BrowserRouter>
+      <Wrapper>
+        <Container>
+          <Sidebar />
+          <Content>
+            <Header />
+            <Routes />
+          </Content>
+        </Container>
+        <Player />
+      </Wrapper>
+    </BrowserRouter>
   </Fragment>
 );
 
