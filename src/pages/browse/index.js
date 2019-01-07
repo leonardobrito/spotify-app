@@ -7,22 +7,22 @@ const Browse = () => (
   <Container>
     <Title>Navegar</Title>
     <List>
-      <Playlist href="">
+      <Playlist to="/playlists/1">
         <img src="https://roquereverso.files.wordpress.com/2017/01/animals.jpg" alt="Pink Floyd" />
         <strong>Rock dos bons</strong>
         <p>Rlx enquanto escuta esse som, mas melhores da atualidade.</p>
       </Playlist>
-      <Playlist href="">
+      <Playlist to="/playlists/1">
         <img src="https://roquereverso.files.wordpress.com/2017/01/animals.jpg" alt="Pink Floyd" />
         <strong>Rock dos bons</strong>
         <p>Rlx enquanto escuta esse som, mas melhores da atualidade.</p>
       </Playlist>
-      <Playlist href="">
+      <Playlist to="/playlists/1">
         <img src="https://roquereverso.files.wordpress.com/2017/01/animals.jpg" alt="Pink Floyd" />
         <strong>Rock dos bons</strong>
         <p>Rlx enquanto escuta esse som, mas melhores da atualidade.</p>
       </Playlist>
-      <Playlist href="">
+      <Playlist to="/playlists/1">
         <img src="https://roquereverso.files.wordpress.com/2017/01/animals.jpg" alt="Pink Floyd" />
         <strong>Rock dos bons</strong>
         <p>Rlx enquanto escuta esse som, mas melhores da atualidade.</p>
