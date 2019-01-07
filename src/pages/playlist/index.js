@@ -16,6 +16,7 @@ const Playlist = () => (
     </Header>
     <SongList cellPadding={0} cellSpacing={0}>
       <thead>
+        <th>#</th>
         <th />
         <th>Título</th>
         <th>Artista</th>
@@ -26,6 +27,7 @@ const Playlist = () => (
       </thead>
       <tbody>
         <tr>
+          <td>1</td>
           <td>
             <img src={PlusIcon} alt="Add" />
           </td>
@@ -35,6 +37,7 @@ const Playlist = () => (
           <td>1:24</td>
         </tr>
         <tr>
+          <td>2</td>
           <td>
             <img src={PlusIcon} alt="Add" />
           </td>
@@ -44,6 +47,7 @@ const Playlist = () => (
           <td>17:05</td>
         </tr>
         <tr>
+          <td>3</td>
           <td>
             <img src={PlusIcon} alt="Add" />
           </td>
@@ -53,6 +57,7 @@ const Playlist = () => (
           <td>11:26</td>
         </tr>
         <tr>
+          <td>4</td>
           <td>
             <img src={PlusIcon} alt="Add" />
           </td>
@@ -62,6 +67,7 @@ const Playlist = () => (
           <td>10:19</td>
         </tr>
         <tr>
+          <td>5</td>
           <td>
             <img src={PlusIcon} alt="Add" />
           </td>

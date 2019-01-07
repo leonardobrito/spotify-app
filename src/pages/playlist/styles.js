@@ -75,8 +75,8 @@ export const SongList = styled.table`
     line-height: 40px;
 
     &:first-child {
-      width: 80px;
-      text-align: right;
+      width: 40px;
+      /* text-align: right; */
     }
 
     &:last-child {
