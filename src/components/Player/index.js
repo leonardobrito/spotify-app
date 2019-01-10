@@ -18,11 +18,31 @@ import ForwardIcon from '../../assets/images/forward.svg';
 import RepeatIcon from '../../assets/images/repeat.svg';
 
 const Player = ({
-  player, play, pause, prev, next,
+  player,
+  play,
+  pause,
+  prev,
+  next,
+  playing,
+  position,
+  duration,
+  handlePosition,
+  setPosition,
+  positionShown,
+  progress,
+  setVolume,
 }) => (
   <Container>
     {!!player.currentSong && (
-    <Sound url={player.currentSong.file} playStatus={player.status} onFinishedPlaying={next} />)}
+    <Sound
+      url={player.currentSong.file}
+      playStatus={player.status}
+      onFinishedPlaying={next}
+      onPlaying={playing}
+      position={player.position}
+      volume={player.volume}
+    />
+    )}
 
     <Current>
       {!!player.currentSong && (
@@ -62,16 +82,19 @@ const Player = ({
         </button>
       </Controls>
       <Time>
-        <span>1:39</span>
+        <span>{ positionShown || position}</span>
         <ProgressSlider>
           <Slider
             railStyle={{ background: '#404040', borderRadius: 10 }}
             trackStyle={{ background: '#1ed760' }}
             handleStyle={{ border: 0 }}
-            value={50}
+            max={1000}
+            onChange={value => handlePosition(value / 1000)}
+            onAfterChange={value => setPosition(value / 1000)}
+            value={progress}
           />
         </ProgressSlider>
-        <span>3:39</span>
+        <span>{duration}</span>
       </Time>
     </Progress>
 
@@ -81,7 +104,8 @@ const Player = ({
         railStyle={{ background: '#404040', borderRadius: 10 }}
         trackStyle={{ background: '#fff' }}
         handleStyle={{ display: 'none' }}
-        value={100}
+        value={player.volume}
+        onChange={setVolume}
       />
     </Volume>
   </Container>
@@ -97,14 +121,35 @@ Player.propTypes = {
     }),
     status: PropTypes.string,
   }).isRequired,
+  position: PropTypes.string.isRequired,
+  positionShown: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  progress: PropTypes.number.isRequired,
   play: PropTypes.func.isRequired,
   pause: PropTypes.func.isRequired,
   prev: PropTypes.func.isRequired,
   next: PropTypes.func.isRequired,
+  playing: PropTypes.func.isRequired,
+  handlePosition: PropTypes.func.isRequired,
+  setPosition: PropTypes.func.isRequired,
+  setVolume: PropTypes.func.isRequired,
 };
+
+function msToTime(duration) {
+  if (!duration) return '';
+  let seconds = parseInt((duration / 1000) % 60, 10);
+  const minutes = parseInt((duration / (1000 * 60)) % 60, 10);
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+  return `${minutes}:${seconds}`;
+}
 
 const mapStateToProps = state => ({
   player: state.player,
+  position: msToTime(state.player.position),
+  duration: msToTime(state.player.duration),
+  positionShown: msToTime(state.player.positionShown),
+  progress: parseInt((
+    state.player.positionShown || state.player.position) * (1000 / state.player.duration), 10) || 0,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(PlayerActions, dispatch);
